@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'Nabla';
+	src: local('Nabla'), url('./assets/fonts/nabla/nabla.woff2') format('woff2');
+}

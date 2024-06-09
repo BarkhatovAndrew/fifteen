@@ -1,30 +1,31 @@
 import { memo, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 type Props = {
-  isStopped: boolean
+  isGameActive: boolean
 }
 
-export const Timer = memo(({ isStopped }: Props) => {
+export const Timer = memo(({ isGameActive }: Props) => {
+  const { t } = useTranslation()
   const [time, setTime] = useState(0)
 
   useEffect(() => {
-    if (isStopped) {
+    if (!isGameActive) {
       return
     }
 
-    const tick = () => {
-      setTime((prev) => prev + 1)
-    }
+    const intervalId = setInterval(() => setTime((prev) => prev + 1), 1000)
 
-    const timerId = setTimeout(tick, 1000)
-
-    return () => clearTimeout(timerId)
-  }, [time, isStopped])
+    return () => clearTimeout(intervalId)
+  }, [isGameActive])
 
   return (
     <div className="w-[80px]">
-      <p className="uppercase">Time</p>
-      <p className="truncate text-xl font-bold">{time}s</p>
+      <p className="uppercase">{t('Time')}</p>
+      <p className="truncate text-xl font-bold">
+        {time}
+        {t('s')}
+      </p>
     </div>
   )
 })

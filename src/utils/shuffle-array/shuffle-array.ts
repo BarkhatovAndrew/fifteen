@@ -1,6 +1,6 @@
 /* eslint-disable */
 // @ts-nocheck
-import { getRandomNumber } from '@/utils/getRandomNumber'
+import { getRandomNumber } from '@/utils/get-random-number'
 
 function shuffleSelf<T>(array: T[], size?: number): T[] {
   var index = -1,
